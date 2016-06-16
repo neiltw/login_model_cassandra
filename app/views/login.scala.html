@@ -1,0 +1,107 @@
+@(message: Form[user])
+
+
+@import helper._
+
+@main("Login 3D PRO") {
+
+    <head>
+        <link rel="stylesheet" href="@routes.Assets.at("bootstrap/css/bootstrap.css")">
+
+        <script src="@routes.Assets.at("bootstrap/js/bootstrap.js")" ></script>
+        <script src="@routes.Assets.at("javascripts/jquery-2.2.0.js")"></script>
+
+        <style>
+
+        body, html {
+            height: 100%;
+            background-repeat: no-repeat;
+            background-image: linear-gradient(rgb(139, 156, 162), rgb(230, 239, 232));
+        }
+        .card-container{
+            max-width:350px;
+            padding:40px 40px;
+        }
+        .card {
+            background-color: #F7F7F7;
+            padding: 50px 30px 80px;
+            margin: 0 auto 25px;
+            margin-top: 90px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-img-card{
+            width: 96px;
+            height: 96px;
+            margin: 0 auto 10px;
+            display: block;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        .reauth-email {
+            display: block;
+            color: #404040;
+            line-height: 2;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .form-signin #name, .form-signin #password {
+            direction: ltr;
+            height: 44px;
+            font-size: 16px;
+        }
+
+
+        </style>
+
+    </head>
+
+        @form(routes.Login.authenticate()){
+
+
+
+            <div class="container">
+            <div class="card card-container" >
+                <img id="profile-img" class="profile-img-card" src="assets/images/login.png" />
+                <p id="profile-name" class="profile-name-card"></p>
+
+                <form class="form-signin" method="post" action=@routes.Login.authenticate()>
+
+                    @*<span id="reauth-email" class="reauth-email"></span>*@
+                    @message.globalError.map{ error =>
+                        <p class="error_editor" style="color: #c12e2a;">
+                            @error.messages
+                        </p>
+                    }
+                    <input type="text" name="name"  class="form-control" placeholder="name"   required autofocus>
+                    <input type="password"  name="password" class="form-control" placeholder="Password" required>
+
+                    <button class="btn btn-lg btn-primary btn-block btn-signin"  id="loginbutton" type="submit">Sign in</button>
+                </form><!-- /form -->
+
+                <a href="#" class="forgot-password">
+                    Forgot the password?
+                </a>
+            </div><!-- /card-container -->
+        </div><!-- /container -->
+
+        }
+
+
+
+}
