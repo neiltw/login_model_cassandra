@@ -7,12 +7,14 @@
 4. Scala 2.11
  
 # create cassandra table 
-### Create Keyspace
-CREATE KEYSPACE IF NOT EXISTS login
-WITH replication = {
-	'class' : 'SimpleStrategy',
-	'replication_factor' : 3
-};
+
+Create Keyspace
+
+    CREATE KEYSPACE IF NOT EXISTS login
+    WITH replication = {
+    	'class' : 'SimpleStrategy',
+    	'replication_factor' : 3
+    };
 
 ### Create table
 CREATE TABLE IF NOT EXISTS login.user (
