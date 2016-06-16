@@ -16,30 +16,37 @@ Create Keyspace
     	'replication_factor' : 3
     };
 
-### Create table
-CREATE TABLE IF NOT EXISTS login.user (
-	id uuid,
-	name text,
-	password text,
-	PRIMARY KEY (id)
-);
+
+Create table
+    
+	CREATE TABLE IF NOT EXISTS login.user (
+		id uuid,
+		name text,
+		password text,
+		PRIMARY KEY (id)
+	);
+	
+	
 ### Create index for search user name
-CREATE INDEX IF NOT EXISTS by_name ON login.user (name);
+
+	CREATE INDEX IF NOT EXISTS by_name ON login.user (name);
 
 ### insert user data
-INSERT into user(id,name,password)VALUES(now(),'neil','1234');
+
+	INSERT into user(id,name,password)VALUES(now(),'neil','1234');
 
 
 ## using project
 git cloen project 
 
 ### download docker cassandra
-<h5>docker pull cassandra</h5>
+
+	docker pull cassandra
 
 #### run image:
 open cassandra for docker port 
 
-docker run -it --name cassandra_login -p 7199:7199 -p 8888:8888 -p 9016:9016 -p 9042:9042 -p 9160:9160 -p 50031:50031 -p 61620:61620 -p 61621:61621  cassandra
+	docker run -it --name cassandra_login -p 7199:7199 -p 8888:8888 -p 9016:9016 -p 9042:9042 -p 9160:9160 -p 50031:50031 -p 61620:61620 -p 61621:61621  cassandra
 
 
 test code using intellij IDEA Framework 
